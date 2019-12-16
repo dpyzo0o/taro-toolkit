@@ -103,6 +103,9 @@ const config = {
         },
       },
     },
+    sassLoaderOption: {
+      importer: sassImporter,
+    },
   },
 };
 
