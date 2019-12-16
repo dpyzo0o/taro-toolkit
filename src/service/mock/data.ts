@@ -11,10 +11,17 @@ const mockData: MockData = {
   [apiDef.login]: {
     errorCode: 200,
     errorMessage: 'success',
+    data: {
+      name: 'dpyzo0o',
+      age: 100,
+    },
   },
   [apiDef.test]: () => ({
     errorCode: 200,
     errorMessage: 'success',
+    data: {
+      greeting: 'hello taro-toolkit',
+    },
   }),
 };
 

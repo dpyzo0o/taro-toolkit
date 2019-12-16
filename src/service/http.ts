@@ -29,8 +29,19 @@ export interface FetchOption {
 }
 
 export interface ResponseData {
+  /**
+   * 后台定义的状态码
+   */
   errorCode: number;
+
+  /**
+   * 后台定义的 message
+   */
   errorMessage: string;
+
+  /**
+   * 实际返回数据
+   */
   data?: any;
 }
 
