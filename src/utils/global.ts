@@ -1,4 +1,4 @@
-const globalData = {};
+const globalData: Record<string, any> = {};
 
 export function set(key: string, val: any) {
   globalData[key] = val;

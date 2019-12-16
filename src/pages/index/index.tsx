@@ -1,11 +1,12 @@
 import Taro, { useState } from '@tarojs/taro';
 import { useSelector, useDispatch } from '@tarojs/redux';
-import { View, Button, Input } from '@tarojs/components';
+import { View, Button, Input, Image } from '@tarojs/components';
 import { CommonEventFunction } from '@tarojs/components/types/common';
 
 import { RootState } from '~/redux/rootReducer';
 import { increment, decrement, asyncIncrement, asyncDecrement } from '~/redux/slices/count';
 import { addTodo, deleteTodo, toggleTodo } from '~/redux/slices/todos';
+import warningIcon from '~/assets/warning.png';
 
 import './index.scss';
 
@@ -33,6 +34,7 @@ const Index: Taro.FC = () => {
 
   return (
     <View className='index'>
+      <Image className='icon' src={warningIcon} />
       <View>Count: {count}</View>
       <View className='buttons'>
         <Button type='primary' size='mini' plain onClick={() => dispatch(increment(1))}>
