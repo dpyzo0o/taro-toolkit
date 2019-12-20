@@ -1,8 +1,8 @@
 import apiDef from '~/constants/api';
-import data, { ResponseFunc } from './data';
-import { FetchOption, ResponseData } from '../http';
+import data from './data';
+import { IFetchOption } from '../http';
 
-function fetch(option: FetchOption) {
+function fetch(option: IFetchOption) {
   const { url, data: payload } = option;
   const delay = Math.floor(Math.random() * 1000);
 
@@ -13,23 +13,22 @@ function fetch(option: FetchOption) {
 
   return new Promise((resolve, reject) => {
     const key = Object.keys(apiDef).find(k => apiDef[k] === url) as string;
+    const result = data[apiDef[key]];
+
     setTimeout(() => {
-      const res =
-        typeof data[key] === 'function'
-          ? (data[key] as ResponseFunc)(payload)
-          : (data[key] as ResponseData);
+      const res = typeof result === 'function' ? result(payload) : result;
 
       console.group('%c RECEIVE', 'color: #428df5');
       console.log('Url ->', url);
       console.log('Results -> ', res);
       console.groupEnd();
 
-      if (res.errorCode === 200) {
+      if (res.code === 200) {
         resolve(res);
       } else {
         reject({
-          errorCode: res.errorCode,
-          errorMessage: res.errorMessage,
+          code: res.code,
+          message: res.message,
         });
       }
     }, delay);
@@ -37,10 +36,10 @@ function fetch(option: FetchOption) {
 }
 
 export default {
-  get(option: FetchOption) {
+  get(option: IFetchOption) {
     return fetch(option);
   },
-  post(option: FetchOption) {
+  post(option: IFetchOption) {
     return fetch(option);
   },
 };

@@ -1,24 +1,24 @@
 import apiDef from '~/constants/api';
-import { ResponseData } from '../http';
+import { IResponse } from '../http';
 
 export interface ResponseFunc {
-  (payload: any): ResponseData;
+  (payload: any): IResponse;
 }
 
-type MockData = Record<string, ResponseData | ResponseFunc>;
+type MockData = Record<string, IResponse | ResponseFunc>;
 
 const mockData: MockData = {
   [apiDef.login]: {
-    errorCode: 200,
-    errorMessage: 'success',
+    code: 200,
+    message: 'success',
     data: {
       name: 'dpyzo0o',
       age: 100,
     },
   },
   [apiDef.test]: () => ({
-    errorCode: 200,
-    errorMessage: 'success',
+    code: 200,
+    message: 'success',
     data: {
       greeting: 'hello taro-toolkit',
     },

@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 
-export interface FetchOption {
+export interface IFetchOption {
   /**
    * 请求资源地址
    */
@@ -28,16 +28,16 @@ export interface FetchOption {
   showErrorToast?: boolean;
 }
 
-export interface ResponseData {
+export interface IResponse {
   /**
    * 后台定义的状态码
    */
-  errorCode: number;
+  code: number;
 
   /**
    * 后台定义的 message
    */
-  errorMessage: string;
+  message: string;
 
   /**
    * 实际返回数据
@@ -53,7 +53,7 @@ const CODE_SUCCESS = 200;
 
 Taro.addInterceptor(Taro.interceptors.logInterceptor);
 
-async function fetch(option: FetchOption) {
+async function fetch(option: IFetchOption) {
   const { url, data, header, method, showErrorToast = true } = option;
 
   // 这里可以根据业务需求对 header 进行改造
@@ -62,27 +62,27 @@ async function fetch(option: FetchOption) {
    * 根据后台实现做相应的修改, 小程序只要成功接收到服务器返回, 无论 statusCode 是多少
    * 都会成功返回, 不会抛出错误, 所以需要根据后台实际返回的状态码来判断请求是否成功
    */
-  return Taro.request<ResponseData>({
+  return Taro.request<IResponse>({
     url,
     method,
     header,
     data,
   })
     .then(res => {
-      const { errorCode } = res.data;
+      const { code } = res.data;
 
-      if (errorCode !== CODE_SUCCESS) {
+      if (code !== CODE_SUCCESS) {
         return Promise.reject(res.data);
       }
 
       return res.data;
     })
     .catch(err => {
-      console.error(err.error || err.errorMessage || '请求异常');
+      console.error(err.error || err.message || '请求异常');
 
       if (showErrorToast) {
         Taro.showToast({
-          title: err.error || err.errorMessage || '请求异常',
+          title: err.error || err.message || '请求异常',
           icon: 'none',
           duration: 2000,
         });
@@ -94,10 +94,10 @@ async function fetch(option: FetchOption) {
 }
 
 export default {
-  get(option: FetchOption) {
+  get(option: IFetchOption) {
     return fetch({ ...option, method: 'GET' });
   },
-  post(option: FetchOption) {
+  post(option: IFetchOption) {
     return fetch({ ...option, method: 'POST' });
   },
 };
