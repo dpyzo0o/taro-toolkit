@@ -1,6 +1,6 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "with-redux-toolkit",
+	"projectname": "taro-toolkit",
 	"description": "",
 	"appid": "wx37cee09b514e9327",
 	"setting": {
