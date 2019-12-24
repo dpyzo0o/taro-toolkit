@@ -27,6 +27,7 @@ class App extends Component {
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black',
     },
+    style: 'v2',
   };
 
   componentDidMount() {
