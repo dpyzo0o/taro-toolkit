@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from '@tarojs/redux';
 import { View, Button, Input, Image } from '@tarojs/components';
 import { CommonEventFunction } from '@tarojs/components/types/common';
 
+import useUnload from '~/hooks/useUnload';
 import { RootState } from '~/redux/rootReducer';
 import { increment, decrement, asyncIncrement, asyncDecrement } from '~/redux/slices/count';
 import { addTodo, deleteTodo, toggleTodo } from '~/redux/slices/todos';
@@ -31,6 +32,10 @@ const Index: Taro.FC = () => {
       setInput('');
     }
   };
+
+  useUnload(() => {
+    console.log('index unload');
+  });
 
   return (
     <View className='index'>
@@ -76,6 +81,9 @@ const Index: Taro.FC = () => {
           </View>
         ))}
       </View>
+      <Button type='primary' onClick={() => Taro.navigateTo({ url: '/pages/demo/demo' })}>
+        To Demo
+      </Button>
     </View>
   );
 };
