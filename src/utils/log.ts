@@ -5,19 +5,28 @@ const isDev = process.env.NODE_ENV === 'development';
 
 export default {
   info(...args: any[]) {
-    if (!log || isDev) {
+    if (isDev) {
+      return console.info(...args);
+    }
+    if (!log) {
       return;
     }
     log.info(...args);
   },
   warn(...args: any[]) {
-    if (!log || isDev) {
+    if (isDev) {
+      return console.warn(...args);
+    }
+    if (!log) {
       return;
     }
     log.warn(...args);
   },
   error(...args: any[]) {
-    if (!log || isDev) {
+    if (isDev) {
+      return console.error(...args);
+    }
+    if (!log) {
       return;
     }
     log.error(...args);
