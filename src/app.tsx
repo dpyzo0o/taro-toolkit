@@ -2,6 +2,7 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
 import store from './redux/store';
 import Index from './pages/index';
+import log from './utils/log';
 
 import './app.scss';
 
@@ -59,7 +60,9 @@ class App extends Component {
 
   componentDidHide() {}
 
-  componentDidCatchError() {}
+  componentDidCatchError(error: string) {
+    log.error(error);
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
