@@ -28,7 +28,7 @@ export interface IFetchOption {
   showErrorToast?: boolean;
 }
 
-export interface IResponse {
+export interface IResponse<T> {
   /**
    * 后台定义的状态码
    */
@@ -42,7 +42,7 @@ export interface IResponse {
   /**
    * 实际返回数据
    */
-  data?: any;
+  data?: T;
 }
 
 /**
@@ -53,7 +53,7 @@ const CODE_SUCCESS = 200;
 
 Taro.addInterceptor(Taro.interceptors.logInterceptor);
 
-async function fetch(option: IFetchOption) {
+async function fetch<T>(option: IFetchOption) {
   const { url, data, header, method, showErrorToast = true } = option;
 
   // 这里可以根据业务需求对 header 进行改造
@@ -62,7 +62,7 @@ async function fetch(option: IFetchOption) {
    * 根据后台实现做相应的修改, 小程序只要成功接收到服务器返回, 无论 statusCode 是多少
    * 都会成功返回, 不会抛出错误, 所以需要根据后台实际返回的状态码来判断请求是否成功
    */
-  return Taro.request<IResponse>({
+  return Taro.request<IResponse<T>>({
     url,
     method,
     header,
@@ -94,10 +94,10 @@ async function fetch(option: IFetchOption) {
 }
 
 export default {
-  get(option: IFetchOption) {
-    return fetch({ ...option, method: 'GET' });
+  get<T = any>(option: IFetchOption) {
+    return fetch<T>({ ...option, method: 'GET' });
   },
-  post(option: IFetchOption) {
-    return fetch({ ...option, method: 'POST' });
+  post<T = any>(option: IFetchOption) {
+    return fetch<T>({ ...option, method: 'POST' });
   },
 };
