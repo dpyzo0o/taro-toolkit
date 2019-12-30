@@ -1,13 +1,14 @@
 import Taro from '@tarojs/taro';
 import { View, Button } from '@tarojs/components';
 import { useSelector, useDispatch } from '@tarojs/redux';
+import { AppDispatch } from '~/redux/store';
 import { RootState } from '~/redux/rootReducer';
 import { increment } from '~/redux/slices/count';
 import useUnload from '~/hooks/useUnload';
 import useBoolean from '~/hooks/useBoolean';
 
 const Demo: Taro.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const count = useSelector((state: RootState) => state.count);
   const { state, toggle, setTrue, setFalse } = useBoolean(false);
 
