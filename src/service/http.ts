@@ -28,7 +28,7 @@ export interface IFetchOption {
   showErrorToast?: boolean;
 }
 
-export interface IResponse<T> {
+export interface IResponse<T = any> {
   /**
    * 后台定义的状态码
    */
