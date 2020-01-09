@@ -1,3 +1,4 @@
+/* eslint-disable import/no-commonjs */
 const path = require('path');
 
 // NOTE 在 sass 中通过别名（@ 或 ~）引用需要指定路径
@@ -15,7 +16,7 @@ const sassImporter = function(url) {
 };
 
 const config = {
-  projectName: 'with-redux-toolkit',
+  projectName: 'taro-toolkit',
   date: '2019-12-5',
   designWidth: 750,
   deviceRatio: {
