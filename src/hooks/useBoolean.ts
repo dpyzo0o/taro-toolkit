@@ -1,4 +1,4 @@
-import { useCallback } from '@tarojs/taro';
+import { useCallback } from 'react';
 import useToggle from './useToggle';
 
 /**

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { delay } from '~/utils/common';
+import { delay } from '@/utils/common';
 import { AppThunk } from '../store';
 
 const countSlice = createSlice({

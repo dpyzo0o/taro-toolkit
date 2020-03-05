@@ -1,18 +1,19 @@
-import Taro, { useState } from '@tarojs/taro';
-import { useSelector, useDispatch } from '@tarojs/redux';
+import React, { useState } from 'react';
+import Taro from '@tarojs/taro';
+import { useSelector, useDispatch } from 'react-redux';
 import { View, Button, Input, Image } from '@tarojs/components';
 import { CommonEventFunction } from '@tarojs/components/types/common';
 
-import { AppDispatch } from '~/redux/store';
-import useUnload from '~/hooks/useUnload';
-import { RootState } from '~/redux/rootReducer';
-import { increment, decrement, asyncIncrement, asyncDecrement } from '~/redux/slices/count';
-import { addTodo, deleteTodo, toggleTodo } from '~/redux/slices/todos';
-import warningIcon from '~/assets/warning.png';
+import { AppDispatch } from '@/redux/store';
+import useUnload from '@/hooks/useUnload';
+import { RootState } from '@/redux/rootReducer';
+import { increment, decrement, asyncIncrement, asyncDecrement } from '@/redux/slices/count';
+import { addTodo, deleteTodo, toggleTodo } from '@/redux/slices/todos';
+import warningIcon from '@/assets/warning.png';
 
 import './index.scss';
 
-const Index: Taro.FC = () => {
+const Index: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [input, setInput] = useState('');
@@ -87,10 +88,6 @@ const Index: Taro.FC = () => {
       </Button>
     </View>
   );
-};
-
-Index.config = {
-  navigationBarTitleText: 'taro-toolkit',
 };
 
 export default Index;

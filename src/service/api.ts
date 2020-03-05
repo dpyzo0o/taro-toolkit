@@ -1,4 +1,4 @@
-import apiDef from '~/constants/api';
+import apiDef from '@/constants/api';
 // import http from './http';
 import http from './mock/http';
 

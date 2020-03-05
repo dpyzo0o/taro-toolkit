@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from '@tarojs/taro';
+import { useEffect, useCallback } from 'react';
 
 /**
  * 页面/组件卸载时的回调

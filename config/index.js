@@ -26,48 +26,18 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  babel: {
-    sourceMap: true,
-    presets: [
-      [
-        'env',
-        {
-          modules: false,
-        },
-      ],
-    ],
-    plugins: [
-      'transform-decorators-legacy',
-      'transform-class-properties',
-      'transform-object-rest-spread',
-      [
-        'transform-runtime',
-        {
-          helpers: false,
-          polyfill: false,
-          regenerator: true,
-          moduleName: 'babel-runtime',
-        },
-      ],
-    ],
-  },
   sass: {},
   defineConstants: {},
   alias: {
-    '~': path.resolve(__dirname, '..', 'src'),
+    '@': path.resolve(__dirname, '..', 'src'),
   },
   copy: {
     patterns: [],
     options: {},
   },
+  framework: 'react',
   mini: {
     postcss: {
-      autoprefixer: {
-        enable: true,
-        config: {
-          browsers: ['last 3 versions', 'Android >= 4.1', 'ios >= 8'],
-        },
-      },
       pxtransform: {
         enable: true,
         config: {},

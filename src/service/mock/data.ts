@@ -1,4 +1,4 @@
-import apiDef from '~/constants/api';
+import apiDef from '@/constants/api';
 import { IResponse } from '../http';
 
 export interface ResponseFunc {

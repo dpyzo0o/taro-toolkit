@@ -1,4 +1,4 @@
-import apiDef from '~/constants/api';
+import apiDef from '@/constants/api';
 import data from './data';
 import { IFetchOption } from '../http';
 
