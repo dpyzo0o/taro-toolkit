@@ -54,7 +54,7 @@ const CODE_SUCCESS = 200;
 Taro.addInterceptor(Taro.interceptors.logInterceptor);
 
 async function fetch<T>(option: IFetchOption) {
-  const { url, data, header, method, showErrorToast = true } = option;
+  const { url, data, header, method, showErrorToast = false } = option;
 
   // 这里可以根据业务需求对 header 进行改造
 
@@ -84,7 +84,7 @@ async function fetch<T>(option: IFetchOption) {
         Taro.showToast({
           title: err.error || err.message || '请求异常',
           icon: 'none',
-          duration: 2000,
+          duration: 2500,
         });
       }
 
@@ -99,5 +99,11 @@ export default {
   },
   post<T = any>(option: IFetchOption) {
     return fetch<T>({ ...option, method: 'POST' });
+  },
+  put<T = any>(option: IFetchOption) {
+    return fetch<T>({ ...option, method: 'PUT' });
+  },
+  delete<T = any>(option: IFetchOption) {
+    return fetch<T>({ ...option, method: 'DELETE' });
   },
 };
