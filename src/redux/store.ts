@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware, Action } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
 
-import rootReducer, { RootState } from './rootReducer';
+import rootReducer from './rootReducer';
 
 const middleware = [...getDefaultMiddleware()];
 
@@ -14,8 +14,10 @@ const store = configureStore({
   middleware,
 });
 
+export type RootState = ReturnType<typeof store.getState>;
+
 export type AppDispatch = typeof store.dispatch;
 
-export type AppThunk<T = void> = ThunkAction<Promise<T>, RootState, null, Action<string>>;
+export type AppThunk<T = void> = ThunkAction<Promise<T>, RootState, unknown, Action<string>>;
 
 export default store;

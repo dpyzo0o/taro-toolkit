@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, Button } from '@tarojs/components';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppDispatch } from '@/redux/store';
-import { RootState } from '@/redux/rootReducer';
+import { AppDispatch, RootState } from '@/redux/store';
 import { increment } from '@/redux/slices/count';
 import useUnload from '@/hooks/useUnload';
 import useBoolean from '@/hooks/useBoolean';
