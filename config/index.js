@@ -61,6 +61,9 @@ const config = {
         importer: sassImporter,
       },
     },
+    webpackChain(chain) {
+      chain.plugin('analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, []);
+    },
   },
   h5: {
     publicPath: '/',
@@ -68,9 +71,6 @@ const config = {
     postcss: {
       autoprefixer: {
         enable: true,
-        config: {
-          browsers: ['last 3 versions', 'Android >= 4.1', 'ios >= 8'],
-        },
       },
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
