@@ -73,17 +73,6 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "babel": {
-    "presets": [
-      [
-        "taro",
-        {
-          "framework": "react",
-          "ts": true
-        }
-      ]
-    ]
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
