@@ -2,7 +2,7 @@
 const path = require('path');
 
 // NOTE 在 sass 中通过别名（@ 或 ~）引用需要指定路径
-const sassImporter = function(url) {
+const sassImporter = function (url) {
   if (url[0] === '~' && url[1] !== '/') {
     return {
       file: path.resolve(__dirname, '..', 'node_modules', url.substr(1)),
@@ -57,7 +57,9 @@ const config = {
       },
     },
     sassLoaderOption: {
-      importer: sassImporter,
+      sassOptions: {
+        importer: sassImporter,
+      },
     },
   },
   h5: {
@@ -79,12 +81,14 @@ const config = {
       },
     },
     sassLoaderOption: {
-      importer: sassImporter,
+      sassOptions: {
+        importer: sassImporter,
+      },
     },
   },
 };
 
-module.exports = function(merge) {
+module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'));
   }

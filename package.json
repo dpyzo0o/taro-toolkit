@@ -45,6 +45,7 @@
     "@babel/core": "^7.9.6",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@tarojs/cli": "^3.0.0-beta.5",
     "@tarojs/mini-runner": "3.0.0-beta.5",
     "@types/react": "^16.9.34",
     "@types/react-redux": "^7.1.8",
