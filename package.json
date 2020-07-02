@@ -38,6 +38,7 @@
     "@tarojs/runtime": "^3.0.2",
     "@tarojs/taro": "^3.0.2",
     "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "redux-logger": "^3.0.6"
   },
